@@ -1,12 +1,15 @@
 import React from 'react'
+import trello from '../../assets/trello.png'
+import IntroductionHeaderStyles from '../styles/introductionStyles/IntroductionHeaderStyles'
 
-
-
-
-const introductionHeader = () => {
-  return (
-    <div>introductionHeader</div>
-  )
+const IntroductionHeader = () => {
+	return (
+		<IntroductionHeaderStyles>
+			<div>
+				<img src={trello} alt='' />
+			</div>
+		</IntroductionHeaderStyles>
+	)
 }
 
-export default introductionHeader
+export default IntroductionHeader

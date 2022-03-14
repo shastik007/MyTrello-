@@ -1,11 +1,12 @@
-import './App.css';
+import './App.css'
+import Introduction from './components/layout/Introduction'
 
 function App() {
-  return (
-    <div className="App">
-   
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Introduction />
+		</div>
+	)
 }
 
-export default App;
+export default App
