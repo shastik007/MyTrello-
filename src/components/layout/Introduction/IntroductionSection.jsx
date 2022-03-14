@@ -8,24 +8,21 @@ const IntroductionSection = () => {
 	return (
 		<IntroductionSectionStyles>
 			<div className='first_'>
-				<h1>
-					Trello помогает командам эффективно решать рабочие задачи.
-				</h1>
+				<h1><strong>Trello</strong> helps teams solve work challenges.</h1>
 				<p>
-					Работайте в команде, управляйте проектами и выводите
-					продуктивность на новый уровень собственным уникальным
-					способом вместе с Trello.
+					Team up, manage projects, and take productivity to the next
+					level in your own unique way with Trello.
 				</p>
 				<form>
 					<TextField
 						id='outlined-basic'
-						label='Outlined'
+						label='EMAIL'
 						variant='outlined'
 					/>
-					<Button variant='contained'>Contained</Button>
+					<Button className='button' variant='contained'>register - it's free</Button>
 				</form>
 			</div>
-			<img src={hero} alt="HEROf" />
+			<img src={hero} alt='HEROf' />
 		</IntroductionSectionStyles>
 	)
 }

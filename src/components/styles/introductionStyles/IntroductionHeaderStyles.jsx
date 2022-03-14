@@ -5,6 +5,7 @@ const IntroductionHeaderStyles = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	height: 50px;
+	margin-bottom: 60px;
 	& img{
 		width: 35px;
 	}
