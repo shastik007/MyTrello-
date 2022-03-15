@@ -117,6 +117,14 @@ const LoginForm = () => {
 			>
 				SLACK
 			</Button>
+			<a href=''>
+				<h4>Log in with SSO </h4>
+			</a>
+			<hr />
+			<h5>
+				<a href=''>can't login </a> /{' '}
+				<a href=''>Sign up for an account</a>
+			</h5>
 		</LoginFormStyles>
 	)
 }
