@@ -6,9 +6,8 @@ import TodoItemList from './TodoItemList'
 
 const TodoItem = (props) => {
 	const [value, setValue] = useState('')
+	const [show, setShow] = useState(false)
 	const dispatch = useDispatch()
-	const state = useSelector((state) => state)
-	console.log(state)
 	const changeHandler = (e) => setValue(e.target.value)
 	const submitHandler = (e) => {
 		e.preventDefault()
@@ -16,12 +15,28 @@ const TodoItem = (props) => {
 	}
 	return (
 		<TodoItemStyles>
-			<h2>{props.todos.todoName}</h2>
+			<p>{props.todos.todoName}</p>
 			<TodoItemList todos={props.todos.todos} />
-			<textarea value={value} onChange={changeHandler} type='text' />
-			<button  onClick={submitHandler} id={props.todos.id}>
-				add task
-			</button>
+			{!show && (
+				<div className='new_card' onClick={() => setShow((prev) => !prev)}>
+					+ add new Card
+				</div>
+			)}
+			{show && (
+				<>
+					<textarea
+						value={value}
+						onChange={changeHandler}
+						type='text'
+					/>
+					<button onClick={submitHandler} id={props.todos.id}>
+						add task
+					</button>
+					<button onClick={() => setShow((prev) => !prev)}>
+						close
+					</button>
+				</>
+			)}
 		</TodoItemStyles>
 	)
 }
