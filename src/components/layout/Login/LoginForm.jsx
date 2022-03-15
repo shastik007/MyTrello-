@@ -18,6 +18,7 @@ const LoginForm = () => {
 		email: '',
 		password: '',
 		isValidFields: null,
+		isFoundAccount: null,
 	})
 
 	const onChangeInputs = (e) => {
@@ -25,31 +26,42 @@ const LoginForm = () => {
 		setInputValues({
 			...inputValues,
 			[key]: e.target.value,
-			isValidFields:null,
+			isValidFields: null,
+			isFoundAccount: null,
 		})
 	}
 	console.log(auth)
 	const onSubmitHandler = (e) => {
 		e.preventDefault()
 		if (inputValues.email !== '' && inputValues.password !== '') {
-			users.map((user) => {
+			users.map((user, index) => {
 				if (
 					user.email === inputValues.email &&
 					user.password === inputValues.password
 				) {
 					dispatch(authActions.login())
+				} else {
+					setInputValues({
+						...inputValues,
+						isFoundAccount: { message: 'User is not found' },
+					})
 				}
 			})
 		} else {
 			setInputValues({
 				...inputValues,
-				isValidFields: { message: 'не все поля заполнены' },
+				isValidFields: { message: 'not all fields are filled' },
 			})
 		}
 	}
+	console.log(inputValues.isFoundAccount)
 	return (
 		<LoginFormStyles>
-			{inputValues.isValidFields && <LoginWarning message={inputValues.isValidFields} />}
+			{inputValues.isValidFields && (
+				<LoginWarning
+					validMessage={inputValues.isValidFields.message}
+				/>
+			)}
 			<h5>Log in to Trello</h5>
 			<Input
 				name='email'
