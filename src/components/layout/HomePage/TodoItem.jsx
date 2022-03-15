@@ -17,11 +17,11 @@ const TodoItem = (props) => {
 	return (
 		<TodoItemStyles>
 			<h2>{props.todos.todoName}</h2>
-			<input value={value} onChange={changeHandler} type='text' />
-			<button onClick={submitHandler} id={props.todos.id}>
+			<TodoItemList todos={props.todos.todos} />
+			<textarea value={value} onChange={changeHandler} type='text' />
+			<button  onClick={submitHandler} id={props.todos.id}>
 				add task
 			</button>
-			<TodoItemList todos={props.todos.todos}/>
 		</TodoItemStyles>
 	)
 }

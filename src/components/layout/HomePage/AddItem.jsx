@@ -10,15 +10,7 @@ const AddItem = () => {
 	return (
 		<AddItemStyles>
 			{show && <AddTodoForm onClick={toggleHandler} />}
-			{!show && (
-				<Button
-					onClick={toggleHandler}
-					variant='outlined'
-					startIcon={<MdExposurePlus1 />}
-				>
-					Delete
-				</Button>
-			)}
+			{!show && <div className='button' onClick={toggleHandler}><strong>+</strong> Add new List</div>}
 		</AddItemStyles>
 	)
 }

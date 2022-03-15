@@ -26,6 +26,7 @@ const HeaderStyles = styled.header`
         justify-content: space-around;
         align-items: center;
     }
+	margin-bottom:60px;
 `
 
 export default HeaderStyles
