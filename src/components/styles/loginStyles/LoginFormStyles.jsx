@@ -9,6 +9,7 @@ const LoginFormStyles = styled.form`
   .button_{
       width: 300px;
       margin: 0 auto;
+      margin-bottom: 10px;
   }
 `
 

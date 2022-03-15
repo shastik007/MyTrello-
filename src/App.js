@@ -5,7 +5,8 @@ import Login from './components/layout/Login/Login'
 function App() {
 	return (
 		<div className='App'>
-			{/* <Introduction /> */} <Login />
+			{/* <Introduction />  */}
+			<Login />
 		</div>
 	)
 }
