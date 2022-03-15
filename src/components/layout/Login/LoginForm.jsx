@@ -9,6 +9,7 @@ import { FaMicrosoft } from 'react-icons/fa'
 import { AiFillApple } from 'react-icons/ai'
 import { BsSlack } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
+import LoginWarning from './LoginWarning'
 
 const LoginForm = () => {
 	const dispatch = useDispatch()
@@ -16,6 +17,7 @@ const LoginForm = () => {
 	const [inputValues, setInputValues] = useState({
 		email: '',
 		password: '',
+		isValidFields: null,
 	})
 
 	const onChangeInputs = (e) => {
@@ -23,22 +25,31 @@ const LoginForm = () => {
 		setInputValues({
 			...inputValues,
 			[key]: e.target.value,
+			isValidFields:null,
 		})
 	}
 	console.log(auth)
 	const onSubmitHandler = (e) => {
 		e.preventDefault()
-		users.map((user) => {
-			if (
-				user.email === inputValues.email &&
-				user.password === inputValues.password
-			) {
-				dispatch(authActions.login())
-			}
-		})
+		if (inputValues.email !== '' && inputValues.password !== '') {
+			users.map((user) => {
+				if (
+					user.email === inputValues.email &&
+					user.password === inputValues.password
+				) {
+					dispatch(authActions.login())
+				}
+			})
+		} else {
+			setInputValues({
+				...inputValues,
+				isValidFields: { message: 'не все поля заполнены' },
+			})
+		}
 	}
 	return (
 		<LoginFormStyles>
+			{inputValues.isValidFields && <LoginWarning message={inputValues.isValidFields} />}
 			<h5>Log in to Trello</h5>
 			<Input
 				name='email'
