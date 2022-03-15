@@ -11,6 +11,16 @@ export const todoSlice = createSlice({
 				todos: [],
 			})
 		},
+		addTask: (state, actions) => {
+			console.log(actions)
+			const current = state.find((el) => el.id == actions.payload.id)
+			if (current) {
+				current.todos.push({
+					todos: actions.payload.value,
+					id: Math.random().toString(),
+				})
+			}
+		},
 	},
 })
 
