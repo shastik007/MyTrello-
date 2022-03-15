@@ -30,7 +30,7 @@ const LoginForm = () => {
 			isFoundAccount: null,
 		})
 	}
-	console.log(auth)
+
 	const onSubmitHandler = (e) => {
 		e.preventDefault()
 		if (inputValues.email !== '' && inputValues.password !== '') {
@@ -54,13 +54,14 @@ const LoginForm = () => {
 			})
 		}
 	}
-	console.log(inputValues.isFoundAccount)
+
 	return (
 		<LoginFormStyles>
 			{inputValues.isValidFields && (
-				<LoginWarning
-					validMessage={inputValues.isValidFields.message}
-				/>
+				<LoginWarning message={inputValues.isValidFields.message} />
+			)}
+			{inputValues.isFoundAccount && (
+				<LoginWarning message={inputValues.isFoundAccount.message} />
 			)}
 			<h5>Log in to Trello</h5>
 			<Input

@@ -2,10 +2,9 @@ import React from 'react'
 import LoginWarningStyles from '../../styles/loginStyles/LoginWarningStyles'
 
 const LoginWarning = (props) => {
-	console.log(props)
 	return (
 		<LoginWarningStyles>
-			<h4>{props.validMessage}</h4>
+			<h4>{props.message}</h4>
 		</LoginWarningStyles>
 	)
 }
