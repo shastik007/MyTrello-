@@ -1,34 +1,49 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import TodoItemStyles from '../../styles/HomeStyles/TodoItemStyles'
-import { todoActions } from '../../../store/todo'
 import TodoItemList from './TodoItemList'
 import AddCardForm from './AddCardForm'
+import IconButton from '@mui/material/IconButton'
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder'
+import Button from '@mui/material/Button'
+import AddBoxIcon from '@mui/icons-material/AddBox'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 
 const TodoItem = (props) => {
-	const [value, setValue] = useState('')
 	const [show, setShow] = useState(false)
-	const dispatch = useDispatch()
-	const changeHandler = (e) => setValue(e.target.value)
-	const toggleHandler = () => setShow(prev => !prev)
-	const submitHandler = (e) => {
-		e.preventDefault()
-		dispatch(todoActions.addTask({ value, id: e.target.id }))
-	}
+	const toggleHandler = () => setShow((prev) => !prev)
+    console.log(props.todos , 'todos');
 	return (
 		<TodoItemStyles>
-			<p>{props.todos.todoName}</p>
-			<span>...</span>
+			<div className='head_todoitem'>
+				<h3>{props.todos.todoName}</h3>
+				<IconButton
+					color='primary'
+					aria-label='upload picture'
+					component='span'
+				>
+					<MoreHorizIcon />
+				</IconButton>
+			</div>
 			<TodoItemList todos={props.todos.todos} />
 			{!show && (
-				<div
-					className='new_card'
-					onClick={toggleHandler}
-				>
-					+ add new Card
+				<div className='new_card'>
+					<Button
+						onClick={toggleHandler}
+						variant='contained'
+						startIcon={<AddBoxIcon />}
+					>
+						Add new Card
+					</Button>
+					<IconButton
+						color='primary'
+						aria-label='upload picture'
+						component='span'
+					>
+						<CreateNewFolderIcon />
+					</IconButton>
 				</div>
 			)}
-			{show && <AddCardForm toggle={toggleHandler} />}
+			{show && <AddCardForm id={props.todos.id} toggle={toggleHandler} />}
 		</TodoItemStyles>
 	)
 }

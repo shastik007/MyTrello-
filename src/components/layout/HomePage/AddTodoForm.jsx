@@ -11,6 +11,7 @@ const AddTodoForm = (props) => {
 	const submitHandler = (e) => {
 		e.preventDefault()
 		dispatch(todoActions.add({ value }))
+		setValue('')
 	}
 
 	return (

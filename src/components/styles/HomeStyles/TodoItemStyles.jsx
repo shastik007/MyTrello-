@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
 const TodoItemStyles = styled.div`
-	p {
-		margin: 0;
-	}
 	width: 280px;
 	background-color: darkgray;
 	margin-right: 15px;
@@ -15,7 +12,13 @@ const TodoItemStyles = styled.div`
 		font-size: 15px;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-around;
+	}
+	.head_todoitem {
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
 	}
 `
 
