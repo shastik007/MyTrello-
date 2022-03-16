@@ -8,6 +8,7 @@ const TodoItemStyles = styled.div`
 	background-color: darkgray;
 	margin-right: 15px;
 	border-radius: 5px;
+
 	.new_card {
 		width: 100%;
 		height: 50px;
