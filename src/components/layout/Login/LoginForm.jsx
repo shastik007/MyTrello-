@@ -15,11 +15,13 @@ const LoginForm = () => {
 	const loginSubmitHandler = (e) => {
 		e.preventDefault()
 		const auth = getAuth()
-		console.log(auth)
-		signInWithEmailAndPassword(auth, email.current.value, password.current.value).then((userCredential) => {
-			const user = userCredential.user
-			console.log(user);
-		})
+		const emailValue = email.current.value
+		const passwordValue = password.current.value
+		signInWithEmailAndPassword(auth, emailValue, passwordValue)
+			.then(({ user }) => {
+				console.log(user)
+			})
+			.catch(console.error('error'))
 	}
 
 	return (

@@ -4,9 +4,6 @@ import LoginForm from './LoginForm'
 import LoginHeader from './LoginHeader'
 
 const Login = () => {
-	process.env.hi = 'fuch'
-	console.log(process.env);
-
 	return (
 		<LoginContainerStyles>
 			<LoginHeader />
