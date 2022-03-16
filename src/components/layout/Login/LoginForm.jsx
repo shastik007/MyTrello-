@@ -9,7 +9,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaMicrosoft } from 'react-icons/fa'
 import { AiFillApple } from 'react-icons/ai'
 import { BsSlack } from 'react-icons/bs'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 const LoginForm = () => {
 	const email = useRef('')
