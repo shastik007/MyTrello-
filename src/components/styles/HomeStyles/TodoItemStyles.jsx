@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const TodoItemStyles = styled.div`
 	width: 280px;
+	height: 50%;
 	background-color: darkgray;
 	margin-right: 15px;
 	border-radius: 5px;

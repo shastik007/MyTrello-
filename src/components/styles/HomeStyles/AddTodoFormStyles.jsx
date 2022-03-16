@@ -15,12 +15,10 @@ const AddTodoFormStyles = styled.div`
 	}
 	.wrapper_btn {
 		display: flex;
+		justify-content: space-between;
 		padding: 0px 10px;
 	}
-	.wrapper_btn > div {
-        margin-left: 30px;
-		font-size: 20px;
-	}
+
 `
 
 export default AddTodoFormStyles
