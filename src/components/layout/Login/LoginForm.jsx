@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import LoginFormStyles from '../../styles/loginStyles/LoginFormStyles'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import Input from '../../UI/Input'
 import Button from '@mui/material/Button'
 import { FcGoogle } from 'react-icons/fc'
@@ -13,8 +14,14 @@ const LoginForm = () => {
 	const password = useRef('')
 	const loginSubmitHandler = (e) => {
 		e.preventDefault()
-		console.log(email.current.value)
+		const auth = getAuth()
+		console.log(auth)
+		signInWithEmailAndPassword(auth, email.current.value, password.current.value).then((userCredential) => {
+			const user = userCredential.user
+			console.log(user);
+		})
 	}
+
 	return (
 		<LoginFormStyles>
 			<h5>Log in to Trello</h5>
