@@ -21,7 +21,7 @@ const LoginForm = () => {
 			.then(({ user }) => {
 				console.log(user)
 			})
-			.catch(console.error('error'))
+			.catch(error => console.log(error.message))
 	}
 
 	return (
