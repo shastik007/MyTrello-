@@ -3,26 +3,15 @@ import { authActions } from '../../../store/auth'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import SignUpForm from './SingUpForm'
 
 const SignUp = () => {
 	const dispatch = useDispatch()
 	const { push } = useHistory()
-	const [values, setValues] = useState({
-		email: '',
-		password: '',
-	})
-	const changeHandler = (e) => {
-		const key = e.target.name
-		setValues({
-			...values,
-			[key]: e.target.value,
-		})
-	}
 
-	const submitHandler = (e) => {
-		e.preventDefault()
+	const submitHandler = (email, password) => {
 		const auth = getAuth()
-		createUserWithEmailAndPassword(auth, values.email, values.password)
+		createUserWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
 				console.log(user)
 				dispatch(
@@ -36,28 +25,7 @@ const SignUp = () => {
 			})
 			.catch((error) => console.log(error.message))
 	}
-	return (
-		<form>
-			<h1>hello</h1>
-			<div>
-				<input
-					onChange={changeHandler}
-					value={values.email}
-					name='email'
-					placeholder='email'
-					type='text'
-				/>
-				<input
-					onChange={changeHandler}
-					value={values.password}
-					name='password'
-					placeholder='password'
-					type='text'
-				/>
-				<button onClick={submitHandler}>sign up</button>
-			</div>
-		</form>
-	)
+	return <SignUpForm submit={submitHandler} />
 }
 
 export default SignUp

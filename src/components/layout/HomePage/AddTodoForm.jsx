@@ -12,7 +12,7 @@ const AddTodoForm = (props) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault()
-		dispatch(todoActions.add({ value }))
+		dispatch(todoActions.add({ value:value.toUpperCase() }))
 		setValue('')
 	}
 
