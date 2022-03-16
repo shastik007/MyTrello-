@@ -4,6 +4,7 @@ const HeaderStyles = styled.header`
 	display: flex;
 	justify-content: space-between;
     background-color: gray;
+	align-items: center;
 	& img {
 		width: 80px;
         height: 65px;
@@ -19,6 +20,7 @@ const HeaderStyles = styled.header`
 		width: 700px;
 		display: flex;
 		justify-content: space-around;
+		align-items: center;
 	}
     .search_{
         width: 400px;

@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import LoginFormStyles from '../../styles/loginStyles/LoginFormStyles'
+import { useHistory, Link } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { authActions } from '../../../store/auth'
 import Input from '../../UI/Input'
 import Button from '@mui/material/Button'
 import { FcGoogle } from 'react-icons/fc'
@@ -12,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux'
 const LoginForm = () => {
 	const email = useRef('')
 	const password = useRef('')
+	const dispatch = useDispatch()
+	const { push } = useHistory()
 	const loginSubmitHandler = (e) => {
 		e.preventDefault()
 		const auth = getAuth()
@@ -20,8 +24,16 @@ const LoginForm = () => {
 		signInWithEmailAndPassword(auth, emailValue, passwordValue)
 			.then(({ user }) => {
 				console.log(user)
+				dispatch(
+					authActions.setUser({
+						token: user.accessToken,
+						email: user.email,
+						id: user.uid,
+					}),
+				)
+				push('/home')
 			})
-			.catch(error => console.log(error.message))
+			.catch((error) => console.log(error.message))
 	}
 
 	return (
@@ -70,13 +82,13 @@ const LoginForm = () => {
 			>
 				SLACK
 			</Button>
-			<a href=''>
+			<Link href='/login'>
 				<h4>Log in with SSO </h4>
-			</a>
+			</Link>
 			<hr />
 			<h5>
-				<a href=''>can't login </a> /{' '}
-				<a href=''>Sign up for an account</a>
+				<Link href=''>can't login </Link> /{' '}
+				<Link to="/signup">Sign up for an account</Link>
 			</h5>
 		</LoginFormStyles>
 	)

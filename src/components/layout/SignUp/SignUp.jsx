@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
+import { authActions } from '../../../store/auth'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 const SignUp = () => {
+	const dispatch = useDispatch()
+	const { push } = useHistory()
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
@@ -18,8 +23,16 @@ const SignUp = () => {
 		e.preventDefault()
 		const auth = getAuth()
 		createUserWithEmailAndPassword(auth, values.email, values.password)
-			.then((obj) => {
-				console.log(obj)
+			.then(({ user }) => {
+				console.log(user)
+				dispatch(
+					authActions.setUser({
+						token: user.accessToken,
+						email: user.email,
+						id: user.uid,
+					}),
+				)
+				push('/home')
 			})
 			.catch((error) => console.log(error.message))
 	}
