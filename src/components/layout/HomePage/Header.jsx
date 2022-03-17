@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField'
 import SearchIcon from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
+import { HeaderStyleGlobal } from '../../styles/HomeStyles/HederStyles'
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -22,16 +23,16 @@ const Header = () => {
 				<nav>
 					<ul>
 						<li>
-							
+							<Button variant='contained'>Work space</Button>
 						</li>
 						<li>
-							
+							<Button variant='contained'>Recently</Button>
 						</li>
 						<li>
-						
+							<Button variant='contained'>Favorite</Button>
 						</li>
 						<li>
-							
+							<Button variant='contained'>Patterns</Button>
 						</li>
 						<li>
 							<Button variant='contained'>Create</Button>
