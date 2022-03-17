@@ -46,10 +46,18 @@ export const todoSlice = createSlice({
 		archiveTodos: (state, actions) => {
 			const { todosId } = actions.payload
 			const currentIndex = state.todoData.findIndex(
-				(el) => el.id == todosId,
+				(el) => el.id === todosId,
 			)
 			state.archive.push(state.todoData[currentIndex])
 			state.todoData.splice(currentIndex, 1)
+		},
+		unzipTodos: (state, actions) => {
+			const { todoId } = actions.payload
+			const currentIndex = state.archive.findIndex(
+				(el) => el.id === todoId,
+			)
+			state.todoData.push(state.archive[currentIndex])
+			state.archive.splice(currentIndex, 1)
 		},
 	},
 })

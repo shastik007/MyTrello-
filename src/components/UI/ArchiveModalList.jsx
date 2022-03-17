@@ -59,6 +59,11 @@ const ArchiveModalList = (props) => {
 	const dispatch = useDispatch()
 	const archive = useSelector((state) => state.todo.archive)
 
+	const unzipHandler = (todoId) => {
+		dispatch(todoActions.unzipTodos({ todoId }))
+        props.toggle()
+	}
+
 	return (
 		<>
 			{createPortal(
@@ -76,6 +81,9 @@ const ArchiveModalList = (props) => {
 												<ArchiveItem key={el.id}>
 													<h5>{el.todoName}</h5>
 													<Button
+														onClick={() =>
+															unzipHandler(el.id)
+														}
 														variant='contained'
 														component='span'
 													>
