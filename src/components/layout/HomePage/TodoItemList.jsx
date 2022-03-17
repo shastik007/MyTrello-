@@ -37,6 +37,7 @@ const TodoItemList = (props) => {
 					<TodoItemSubItem key={el.id}>
 						{show && (
 							<Modal
+								todosId={props.todosId}
 								id={el.id}
 								name={el.todos}
 								onClick={toggleHandler}

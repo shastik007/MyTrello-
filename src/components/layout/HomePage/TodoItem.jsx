@@ -24,7 +24,7 @@ const TodoItem = (props) => {
 					<MoreHorizIcon />
 				</IconButton>
 			</div>
-			<TodoItemList todos={props.todos.todos} />
+			<TodoItemList todosId={props.id} todos={props.todos.todos} />
 			{!show && (
 				<div className='new_card'>
 					<Button

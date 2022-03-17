@@ -6,6 +6,7 @@ import TodoList from './TodoList'
 import { Redirect } from 'react-router-dom'
 import { useAuth } from '../../../hooks/useAuth'
 import img from '../../../assets/homeback.avif'
+import { useSelector } from 'react-redux'
 
 const HomeStyleGlobal = createGlobalStyle`
   body{

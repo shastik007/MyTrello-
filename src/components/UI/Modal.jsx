@@ -4,6 +4,9 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import UpdateIcon from '@mui/icons-material/Update'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import { useDispatch } from 'react-redux'
+import { todoActions } from '../../store/todo'
+import { useState } from 'react'
 
 const ModalStyled = styled.div`
 	.backdrop {
@@ -30,8 +33,8 @@ const ModalStyled = styled.div`
 		color: #1976d2;
 		letter-spacing: 2px;
 	}
-	.header h2{
-		margin-bottom:0px;
+	.header h2 {
+		margin-bottom: 0px;
 	}
 	.content {
 		padding: 1rem;
@@ -61,8 +64,26 @@ const ModalStyled = styled.div`
 	}
 `
 
-const Modal = ({ onClick, name }) => {
-	
+const Modal = ({ onClick, name, id, todosId }) => {
+	const dispatch = useDispatch()
+	const [inputValue, setInputValue] = useState('')
+	const removeHandler = () => {
+		dispatch(todoActions.deleteTask({ taskId: id, todosId }))
+		onClick()
+	}
+	const updateHandler = () => {
+		dispatch(
+			todoActions.updateTask({
+				taskId: id,
+				todosId,
+				updatedTask: inputValue,
+			}),
+		)
+		onClick()
+	}
+	const onChangeHandler = (e) => {
+		setInputValue(e.target.value)
+	}
 	return (
 		<>
 			{createPortal(
@@ -75,12 +96,15 @@ const Modal = ({ onClick, name }) => {
 							</header>
 							<div className='content'>
 								<TextField
+									onChange={onChangeHandler}
+									value={inputValue}
 									className='input_update'
 									id='standard-basic'
 									label='Standard'
 									variant='standard'
 								/>
 								<Button
+									onClick={updateHandler}
 									variant='outlined'
 									startIcon={<UpdateIcon />}
 								>
@@ -90,13 +114,14 @@ const Modal = ({ onClick, name }) => {
 							<footer className='actions'>
 								<div className='buttons'>
 									<Button
+										onClick={removeHandler}
 										variant='outlined'
 										startIcon={<DeleteOutlineIcon />}
 									>
 										Delete
 									</Button>
 									<Button
-									    onClick={onClick}
+										onClick={onClick}
 										variant='contained'
 										component='span'
 									>
