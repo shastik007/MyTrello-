@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
 import ModeEditIcon from '@mui/icons-material/ModeEdit'
+import Modal from '../../UI/Modal'
 const TodoItemSubItem = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -26,13 +27,24 @@ const TodoItemSubItem = styled.div`
 `
 
 const TodoItemList = (props) => {
+	const [show, setShow] = useState(false)
+	const toggleHandler = () => setShow((prev) => !prev)
 	return (
 		<div>
 			{props.todos.map((el) => {
+				console.log(el)
 				return (
-					<TodoItemSubItem>
+					<TodoItemSubItem key={el.id}>
+						{show && (
+							<Modal
+								id={el.id}
+								name={el.todos}
+								onClick={toggleHandler}
+							/>
+						)}
 						<h3>{el.todos}</h3>
 						<IconButton
+							onClick={toggleHandler}
 							color='primary'
 							aria-label='upload picture'
 							component='span'

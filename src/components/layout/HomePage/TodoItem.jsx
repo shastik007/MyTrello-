@@ -11,7 +11,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 const TodoItem = (props) => {
 	const [show, setShow] = useState(false)
 	const toggleHandler = () => setShow((prev) => !prev)
-    console.log(props.todos , 'todos');
+   
 	return (
 		<TodoItemStyles>
 			<div className='head_todoitem'>
