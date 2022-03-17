@@ -45,7 +45,14 @@ const ModalStyled = styled.div`
 	}
 	.content {
 		padding: 1rem;
+        display: flex;
+        justify-content: center;
+        color: #1976d2;
+        text-shadow: 0 1px 2px black;
 	}
+    .content h1{
+
+    }
 
 	@media (min-width: 768px) {
 		.modal {
@@ -92,7 +99,7 @@ const ArchiveModalList = (props) => {
 												</ArchiveItem>
 											)
 									  })
-									: ''}
+									: <h1>not found items in archive</h1>}
 							</div>
 							<footer className='actions'>
 								<div className='buttons'>
