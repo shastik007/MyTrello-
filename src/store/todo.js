@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const todoSlice = createSlice({
 	name: 'todo',
 	initialState: {
-		todoData:[],
-		archive:[],
+		todoData: [],
+		archive: [],
 	},
 	reducers: {
 		add: (state, actions) => {
@@ -16,7 +16,9 @@ export const todoSlice = createSlice({
 		},
 		addTask: (state, actions) => {
 			console.log(actions)
-			const current = state.todoData.find((el) => el.id == actions.payload.id)
+			const current = state.todoData.find(
+				(el) => el.id == actions.payload.id,
+			)
 			if (current) {
 				current.todos.push({
 					todos: actions.payload.value,
@@ -34,12 +36,21 @@ export const todoSlice = createSlice({
 		updateTask: (state, actions) => {
 			const { taskId, todosId, updatedTask } = actions.payload
 			const currentTodos = state.todoData.find((el) => el.id === todosId)
-			if(currentTodos){
-				const currentIndex = currentTodos.todos.findIndex(el => el.id === taskId)
+			if (currentTodos) {
+				const currentIndex = currentTodos.todos.findIndex(
+					(el) => el.id === taskId,
+				)
 				currentTodos.todos[currentIndex].todos = updatedTask
 			}
 		},
-		
+		archiveTodos: (state, actions) => {
+			const { todosId } = actions.payload
+			const currentIndex = state.todoData.findIndex(
+				(el) => el.id == todosId,
+			)
+			state.archive.push(state.todoData[currentIndex])
+			state.todoData.splice(currentIndex, 1)
+		},
 	},
 })
 

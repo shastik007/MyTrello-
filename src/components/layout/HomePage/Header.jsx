@@ -35,7 +35,7 @@ const Header = () => {
 							<Button variant='contained'>Patterns</Button>
 						</li>
 						<li>
-							<Button variant='contained'>Create</Button>
+							<Button variant='contained'>Archive List</Button>
 						</li>
 					</ul>
 				</nav>
