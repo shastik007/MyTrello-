@@ -3,11 +3,11 @@ import styled from 'styled-components'
 const HeaderStyles = styled.header`
 	display: flex;
 	justify-content: space-between;
-    background-color: gray;
+	margin-top: 20px;
 	align-items: center;
 	& img {
 		width: 80px;
-        height: 65px;
+		height: 65px;
 	}
 	& nav ul {
 		list-style: none;
@@ -22,13 +22,13 @@ const HeaderStyles = styled.header`
 		justify-content: space-around;
 		align-items: center;
 	}
-    .search_{
-        width: 400px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-	margin-bottom:60px;
+	.search_ {
+		width: 400px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	margin-bottom: 60px;
 `
 
 export default HeaderStyles

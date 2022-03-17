@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField'
 import SearchIcon from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
-import HeaderSelectItem from './HeaderSelectItem'
+
 const Header = () => {
 	const dispatch = useDispatch()
 	const logoutHandler = () => {
@@ -22,16 +22,16 @@ const Header = () => {
 				<nav>
 					<ul>
 						<li>
-							<HeaderSelectItem />
+							
 						</li>
 						<li>
-							<HeaderSelectItem />
+							
 						</li>
 						<li>
-							<HeaderSelectItem />
+						
 						</li>
 						<li>
-							<HeaderSelectItem />
+							
 						</li>
 						<li>
 							<Button variant='contained'>Create</Button>
