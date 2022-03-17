@@ -5,7 +5,6 @@ import MenuItem from '@mui/material/MenuItem'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import IconButton from '@mui/material/IconButton'
 
-
 export default function DropDown(props) {
 	const [anchorEl, setAnchorEl] = React.useState(null)
 	const open = Boolean(anchorEl)
@@ -13,7 +12,15 @@ export default function DropDown(props) {
 		setAnchorEl(event.currentTarget)
 	}
 	const handleClose = () => {
-        props.archive()
+		setAnchorEl(null)
+	}
+
+	const handleCloseArchive = () => {
+		props.archive()
+		setAnchorEl(null)
+	}
+
+	const handleCloseTodoName = () => {
 		setAnchorEl(null)
 	}
 
@@ -43,8 +50,8 @@ export default function DropDown(props) {
 					'aria-labelledby': 'basic-button',
 				}}
 			>
-				<MenuItem onClick={handleClose}>Archive</MenuItem>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
+				<MenuItem onClick={handleCloseArchive}>Archive</MenuItem>
+				<MenuItem onClick={handleCloseTodoName}>Change Todo Name</MenuItem>
 				<MenuItem onClick={handleClose}>Logout</MenuItem>
 			</Menu>
 		</div>

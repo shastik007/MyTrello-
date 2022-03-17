@@ -59,6 +59,7 @@ export const todoSlice = createSlice({
 			state.todoData.push(state.archive[currentIndex])
 			state.archive.splice(currentIndex, 1)
 		},
+		
 	},
 })
 
