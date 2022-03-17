@@ -4,8 +4,13 @@ import TodoListStyles from '../../styles/HomeStyles/TodoListStyles'
 import TodoItem from './TodoItem'
 import AddItem from './AddItem'
 
-const TodoList = () => {
-	const state = useSelector((state) => state.todo.todoData)
+const TodoList = ({searchValue}) => {
+	let state = useSelector((state) => state.todo.todoData)
+	if(searchValue.length > 0){
+		state = state.filter((el) =>{
+			return el.todoName.toUpperCase().match(searchValue.toUpperCase())
+		})
+	}
 
 	return (
 		<TodoListStyles>

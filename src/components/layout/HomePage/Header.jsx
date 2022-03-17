@@ -10,7 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
 import ArchiveModalList from '../../UI/ArchiveModalList'
 
-const Header = () => {
+const Header = ({val,change}) => {
 	const [archiveModal, setArchiveModal] = useState(false)
 	const dispatch = useDispatch()
 	const logoutHandler = () => {
@@ -46,7 +46,11 @@ const Header = () => {
 							>
 								Archive List
 							</Button>
-							{archiveModal && <ArchiveModalList toggle={toggleArchiveHandler} />}
+							{archiveModal && (
+								<ArchiveModalList
+									toggle={toggleArchiveHandler}
+								/>
+							)}
 						</li>
 					</ul>
 				</nav>
@@ -54,6 +58,8 @@ const Header = () => {
 
 			<div className='search_'>
 				<TextField
+				    value={val}
+					onChange={change}
 					id='input-with-icon-textfield'
 					InputProps={{
 						startAdornment: (

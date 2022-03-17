@@ -31,7 +31,6 @@ const LoginForm = () => {
 		const auth = getAuth()
 		signInWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
-				console.log(user)
 				dispatch(
 					authActions.setUser({
 						token: user.accessToken,
@@ -110,7 +109,7 @@ const LoginForm = () => {
 			</Link>
 			<hr />
 			<h5>
-				<Link to="/signup">can't login </Link> /
+				<Link to='/signup'>can't login </Link> /
 				<Link to='/signup'>Sign up for an account</Link>
 			</h5>
 		</LoginFormStyles>

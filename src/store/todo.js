@@ -15,7 +15,6 @@ export const todoSlice = createSlice({
 			})
 		},
 		addTask: (state, actions) => {
-			console.log(actions)
 			const current = state.todoData.find(
 				(el) => el.id == actions.payload.id,
 			)
@@ -59,7 +58,6 @@ export const todoSlice = createSlice({
 			state.todoData.push(state.archive[currentIndex])
 			state.archive.splice(currentIndex, 1)
 		},
-		
 	},
 })
 

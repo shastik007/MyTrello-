@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import Header from './Header'
 import HomePageStyles from '../../styles/HomeStyles/HomePageStyles'
@@ -17,15 +17,18 @@ const HomeStyleGlobal = createGlobalStyle`
 `
 const HomePage = () => {
 	const auth = useAuth()
-
+	const [value, setValue] = useState('')
+	const changeHandler = (e) => {
+		setValue(e.target.value)
+	}
 	return (
 		<>
 			{auth.isAuth ? (
 				<>
 					<HomeStyleGlobal />
 					<HomePageStyles>
-						<Header />
-						<TodoList />
+						<Header val={value} change={changeHandler} />
+						<TodoList searchValue={value} />
 					</HomePageStyles>
 				</>
 			) : (

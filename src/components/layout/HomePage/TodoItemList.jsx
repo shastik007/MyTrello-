@@ -32,7 +32,6 @@ const TodoItemList = (props) => {
 	return (
 		<div>
 			{props.todos.map((el) => {
-				console.log(el)
 				return (
 					<TodoItemSubItem key={el.id}>
 						{show && (
