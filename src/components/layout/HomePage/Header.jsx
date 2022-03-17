@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { authActions } from '../../../store/auth'
 import HeaderStyles from '../../styles/HomeStyles/HederStyles'
 import logo from '../../../assets/trello-logo.svg'
@@ -8,12 +8,17 @@ import TextField from '@mui/material/TextField'
 import SearchIcon from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
-import { HeaderStyleGlobal } from '../../styles/HomeStyles/HederStyles'
+import ArchiveModalList from '../../UI/ArchiveModalList'
 
 const Header = () => {
+	const [archiveModal, setArchiveModal] = useState(false)
 	const dispatch = useDispatch()
 	const logoutHandler = () => {
 		dispatch(authActions.removeUser())
+	}
+
+	const toggleArchiveHandler = () => {
+		setArchiveModal((prev) => !prev)
 	}
 
 	return (
@@ -35,7 +40,13 @@ const Header = () => {
 							<Button variant='contained'>Patterns</Button>
 						</li>
 						<li>
-							<Button variant='contained'>Archive List</Button>
+							<Button
+								onClick={toggleArchiveHandler}
+								variant='contained'
+							>
+								Archive List
+							</Button>
+							{archiveModal && <ArchiveModalList toggle={toggleArchiveHandler} />}
 						</li>
 					</ul>
 				</nav>
