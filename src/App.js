@@ -2,7 +2,7 @@ import './App.css'
 import Introduction from './components/layout/Introduction/Introduction'
 import Login from './components/layout/Login/Login'
 import HomePage from './components/layout/HomePage/HomePage'
-import SignUp from './components/layout/SignUp/SignUp'
+import SignUp from './components/layout/SignUp/SingUp'
 import { Switch, Route } from 'react-router-dom'
 
 function App() {
