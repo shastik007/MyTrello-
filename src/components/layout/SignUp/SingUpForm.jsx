@@ -17,32 +17,38 @@ const SignUpForm = (props) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault()
-		props.submit(email,password)
+		props.submit(email, password)
 	}
 
 	return (
 		<SignUpFormStyle>
-			<TextField
-				id='standard-multiline-flexible'
-				label='Multiline'
-				multiline
-				maxRows={4}
-				value={email}
-				onChange={onChangeEmail}
-				variant='standard'
-			/>
-			<TextField
-				id='standard-multiline-flexible'
-				label='Multiline'
-				multiline
-				maxRows={4}
-				value={password}
-				onChange={onChangePassword}
-				variant='standard'
-			/>
-			<Button onClick={submitHandler} variant='outlined'>
-				Outlined
-			</Button>
+			<div>
+				<TextField
+					id='standard-multiline-flexible'
+					label='Multiline'
+					multiline
+					maxRows={4}
+					value={email}
+					onChange={onChangeEmail}
+					variant='standard'
+				/>
+			</div>
+			<div>
+				<TextField
+					id='standard-multiline-flexible'
+					label='Multiline'
+					multiline
+					maxRows={4}
+					value={password}
+					onChange={onChangePassword}
+					variant='standard'
+				/>
+			</div>
+			<div>
+				<Button onClick={submitHandler} variant='outlined'>
+					Outlined
+				</Button>
+			</div>
 		</SignUpFormStyle>
 	)
 }

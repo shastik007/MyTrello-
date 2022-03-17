@@ -2,9 +2,14 @@ import styled from 'styled-components'
 
 const TodoItemStyles = styled.div`
 	width: 280px;
-	height: 50%;
+	overflow: auto;
+	max-height: 500px;
+	::-webkit-scrollbar {
+		background-color: transparent;
+		width: 0.5rem;
+	}
 	background-color: darkgray;
-	margin-right: 15px;
+	margin-right: 20px;
 	border-radius: 5px;
 
 	.new_card {
@@ -20,6 +25,9 @@ const TodoItemStyles = styled.div`
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
+	}
+	& h3 {
+		letter-spacing: 1px;
 	}
 `
 

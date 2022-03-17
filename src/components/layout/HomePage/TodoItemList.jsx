@@ -21,6 +21,7 @@ const TodoItemSubItem = styled.div`
 
 	& h3 {
 		margin: 0;
+		letter-spacing: 1px;
 	}
 `
 
