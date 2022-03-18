@@ -9,12 +9,13 @@ import SearchIcon from '@mui/icons-material/Search'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
 import ArchiveModalList from '../../UI/ArchiveModalList'
+import { removeUser } from '../../../store/auth'
 
-const Header = ({val,change}) => {
+const Header = ({ val, change }) => {
 	const [archiveModal, setArchiveModal] = useState(false)
 	const dispatch = useDispatch()
 	const logoutHandler = () => {
-		dispatch(authActions.removeUser())
+		dispatch(removeUser())
 	}
 
 	const toggleArchiveHandler = () => {
@@ -58,7 +59,7 @@ const Header = ({val,change}) => {
 
 			<div className='search_'>
 				<TextField
-				    value={val}
+					value={val}
 					onChange={change}
 					id='input-with-icon-textfield'
 					InputProps={{

@@ -3,9 +3,24 @@ import Introduction from './components/layout/Introduction/Introduction'
 import Login from './components/layout/Login/Login'
 import HomePage from './components/layout/HomePage/HomePage'
 import SignUp from './components/layout/SignUp/SingUp'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import { useEffect } from 'react'
+import { getUser } from './store/auth'
+import { useDispatch } from 'react-redux'
+import { useAuth } from './hooks/useAuth'
 
 function App() {
+	const { push } = useHistory()
+	const dispatch = useDispatch()
+	const auth = useAuth()
+	useEffect(async () => {
+		const response = await dispatch(getUser())
+		if (response.payload) {
+			push('/home')
+		}
+		return response
+	}, [])
+
 	return (
 		<div className='App'>
 			<Switch>

@@ -37,7 +37,7 @@ const LoginForm = () => {
 						token: user.accessToken,
 						email: user.email,
 						id: user.uid,
-					}),
+					}, ),
 				)
 			})
 			.then(() => {

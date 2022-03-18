@@ -21,7 +21,7 @@ const HomePage = () => {
 	const changeHandler = (e) => {
 		setValue(e.target.value)
 	}
-	console.log(auth)
+	console.log(auth,'auth home')
 	return (
 		<>
 			{auth.isAuth ? (

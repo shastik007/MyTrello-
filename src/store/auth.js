@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { AUTH } from '../utils/constats'
-import { getLocalStorage, saveToLocalStorage } from '../utils/helpers'
+import {
+	getLocalStorage,
+	saveToLocalStorage,
+	removeLocalStorage,
+} from '../utils/helpers'
 
 export const addUser = createAsyncThunk(
 	'authentification/checkIsAuth',
@@ -14,13 +18,15 @@ export const addUser = createAsyncThunk(
 export const getUser = createAsyncThunk(
 	'authentification/checkIsAuth',
 	async () => {
-		const json = getLocalStorage(AUTH)
+		return getLocalStorage(AUTH)
 	},
 )
 
 export const removeUser = createAsyncThunk(
 	'authentification/checkIsAuth',
-	async () => {},
+	async () => {
+		removeLocalStorage(AUTH)
+	},
 )
 
 export const authSlice = createSlice({
@@ -36,20 +42,30 @@ export const authSlice = createSlice({
 		// 	state.token = actions.payload.token
 		// 	state.id = actions.payload.id
 		// },
-		removeUser: (state) => {
-			state.email = null
-			state.token = null
-			state.id = null
-		},
+		// removeUser: (state) => {
+		// 	state.email = null
+		// 	state.token = null
+		// 	state.id = null
+		// },
 	},
 	extraReducers: {
 		[addUser.fulfilled]: (state, actions) => {
-			console.log(actions.payload,'action');
 			state.email = actions.payload.email
 			state.token = actions.payload.token
 			state.id = actions.payload.id
 		},
+		[getUser.fulfilled]: (state, actions) => {
+			state.email = actions.payload.email
+			state.token = actions.payload.token
+			state.id = actions.payload.id
+		},
+		[removeUser.fulfilled]: (state) =>{
+			state.email = null
+			state.token = null
+			state.id = null
+		}
 	},
+
 })
 
 export const authActions = authSlice.actions
