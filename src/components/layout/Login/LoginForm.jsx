@@ -11,6 +11,7 @@ import { FaMicrosoft } from 'react-icons/fa'
 import { AiFillApple } from 'react-icons/ai'
 import { BsSlack } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
+import { addUser } from '../../../store/auth'
 
 const LoginForm = () => {
 	const [errorMessage, setErrorMessage] = useState(null)
@@ -31,13 +32,15 @@ const LoginForm = () => {
 		const auth = getAuth()
 		signInWithEmailAndPassword(auth, email, password)
 			.then(({ user }) => {
-				dispatch(
-					authActions.setUser({
+				return dispatch(
+					addUser({
 						token: user.accessToken,
 						email: user.email,
 						id: user.uid,
 					}),
 				)
+			})
+			.then(() => {
 				push('/home')
 			})
 			.catch((error) => {

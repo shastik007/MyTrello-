@@ -18,6 +18,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Alert from '@mui/material/Alert'
+import { addUser } from '../../../store/auth'
 
 function Copyright(props) {
 	return (
@@ -54,14 +55,15 @@ export default function SignUp() {
 			data.get('password'),
 		)
 			.then(({ user }) => {
-				console.log(user)
-				dispatch(
-					authActions.setUser({
+				return dispatch(
+					addUser({
 						token: user.accessToken,
 						email: user.email,
 						id: user.uid,
 					}),
 				)
+			})
+			.then(() => {
 				push('/home')
 			})
 			.catch((error) => setError({ message: error.message }))
