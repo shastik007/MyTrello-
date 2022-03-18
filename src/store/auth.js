@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { deleteUser } from 'firebase/auth'
 import { AUTH } from '../utils/constats'
 import {
 	getLocalStorage,
@@ -26,6 +27,7 @@ export const removeUser = createAsyncThunk(
 	'authentification/checkIsAuth',
 	async () => {
 		removeLocalStorage(AUTH)
+		deleteUser()
 	},
 )
 
@@ -37,16 +39,11 @@ export const authSlice = createSlice({
 		id: null,
 	},
 	reducers: {
-		// setUser: (state, actions) => {
-		// 	state.email = actions.payload.email
-		// 	state.token = actions.payload.token
-		// 	state.id = actions.payload.id
-		// },
-		// removeUser: (state) => {
-		// 	state.email = null
-		// 	state.token = null
-		// 	state.id = null
-		// },
+		deleteUser: (state) => {
+			state.email = null
+			state.token = null
+			state.id = null
+		},
 	},
 	extraReducers: {
 		[addUser.fulfilled]: (state, actions) => {
@@ -59,13 +56,7 @@ export const authSlice = createSlice({
 			state.token = actions.payload.token
 			state.id = actions.payload.id
 		},
-		[removeUser.fulfilled]: (state) =>{
-			state.email = null
-			state.token = null
-			state.id = null
-		}
 	},
-
 })
 
 export const authActions = authSlice.actions

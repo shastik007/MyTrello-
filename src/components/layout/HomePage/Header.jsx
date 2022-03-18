@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { authActions } from '../../../store/auth'
 import HeaderStyles from '../../styles/HomeStyles/HederStyles'
 import logo from '../../../assets/trello-logo.svg'
 import Button from '@mui/material/Button'
@@ -10,12 +9,15 @@ import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
 import ArchiveModalList from '../../UI/ArchiveModalList'
 import { removeUser } from '../../../store/auth'
+import { useHistory } from 'react-router-dom'
 
 const Header = ({ val, change }) => {
 	const [archiveModal, setArchiveModal] = useState(false)
 	const dispatch = useDispatch()
+	const { push } = useHistory()
 	const logoutHandler = () => {
 		dispatch(removeUser())
+		push('/')
 	}
 
 	const toggleArchiveHandler = () => {
