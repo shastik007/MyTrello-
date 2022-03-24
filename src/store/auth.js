@@ -10,7 +10,6 @@ import {
 export const addUser = createAsyncThunk(
 	'authentification/checkIsAuth',
 	async (userInfo) => {
-		console.log(userInfo)
 		saveToLocalStorage(AUTH, userInfo)
 		return userInfo
 	},

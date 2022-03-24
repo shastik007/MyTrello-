@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import LoginFormStyles from '../../styles/loginStyles/LoginFormStyles'
 import LoginWarning from './LoginWarning'
-import { useHistory, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { authActions } from '../../../store/auth'
 import Input from '../../UI/Input'
@@ -26,7 +26,7 @@ const LoginForm = () => {
 		setErrorMessage(null)
 	}
 	const dispatch = useDispatch()
-	const { push } = useHistory()
+	const navigate = useNavigate()
 	const loginSubmitHandler = (e) => {
 		e.preventDefault()
 		const auth = getAuth()
@@ -41,7 +41,7 @@ const LoginForm = () => {
 				)
 			})
 			.then(() => {
-				push('/home')
+				navigate('/home')
 			})
 			.catch((error) => {
 				setErrorMessage({

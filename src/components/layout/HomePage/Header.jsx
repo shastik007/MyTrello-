@@ -9,15 +9,15 @@ import InputAdornment from '@mui/material/InputAdornment'
 import { useDispatch } from 'react-redux'
 import ArchiveModalList from '../../UI/ArchiveModalList'
 import { removeUser } from '../../../store/auth'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Header = ({ val, change }) => {
 	const [archiveModal, setArchiveModal] = useState(false)
 	const dispatch = useDispatch()
-	const { push } = useHistory()
+	const navigate = useNavigate()
 	const logoutHandler = () => {
 		dispatch(removeUser())
-		push('/')
+		navigate('/')
 	}
 
 	const toggleArchiveHandler = () => {

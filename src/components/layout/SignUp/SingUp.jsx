@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { authActions } from '../../../store/auth'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -43,7 +43,7 @@ const theme = createTheme()
 export default function SignUp() {
 	const dispatch = useDispatch()
 	const [error, setError] = useState(null)
-	const { push } = useHistory()
+	const navigate = useNavigate()
 	const onChange = () => setError(null)
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -64,7 +64,7 @@ export default function SignUp() {
 				)
 			})
 			.then(() => {
-				push('/home')
+				navigate('/home')
 			})
 			.catch((error) => setError({ message: error.message }))
 	}

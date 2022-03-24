@@ -10,6 +10,16 @@ const LoginGlobalStyle = createGlobalStyle`
 body{
 	background: var(--background-form);
 	background-size:cover;
+	animation: IN ease-in 1s;
+}
+
+@keyframes IN{
+	0%{
+       opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
 }
  
 `
