@@ -27,10 +27,12 @@ export const todoSlice = createSlice({
 		},
 		deleteTask: (state, actions) => {
 			const { taskId, todosId } = actions.payload
-			const currentTodos = state.todoData.find((el) => el.id === todosId)
-			if (currentTodos) {
-				currentTodos.todos.splice(taskId, 1)
-			}
+			state.todoData = state.todoData.map((el)=>{
+				if(el.id === todosId){
+					el.todos = el.todos.filter((task)=>task.id !== taskId)
+				}
+				return el
+			})
 		},
 		updateTask: (state, actions) => {
 			const { taskId, todosId, updatedTask } = actions.payload
@@ -57,6 +59,9 @@ export const todoSlice = createSlice({
 			)
 			state.todoData.push(state.archive[currentIndex])
 			state.archive.splice(currentIndex, 1)
+		},
+		editTask(state, action) {
+			state.id = action.payload
 		},
 	},
 })

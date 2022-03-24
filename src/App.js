@@ -24,10 +24,10 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route exact path='/' element={<Introduction />} />
-				<Route exact path='/login' element={<Login />} />
-				<Route exact path='/home' element={<HomePage />} />
-				<Route exact path='/signup' element={<SignUp />} />
+				<Route path='/' element={<Introduction />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/home' element={<HomePage />} />
+				<Route path='/signup' element={<SignUp />} />
 			</Routes>
 		</div>
 	)

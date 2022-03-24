@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
 import ModeEditIcon from '@mui/icons-material/ModeEdit'
 import Modal from '../../UI/Modal'
+import { todoActions } from '../../../store/todo'
+import { useDispatch, useSelector } from 'react-redux'
+
 const TodoItemSubItem = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -27,14 +30,20 @@ const TodoItemSubItem = styled.div`
 `
 
 const TodoItemList = (props) => {
+	const id = useSelector(state=>state.todo.id)
+	const dispatch = useDispatch()
 	const [show, setShow] = useState(false)
-	const toggleHandler = () => setShow((prev) => !prev)
+	const toggleHandler = (id) => {
+		setShow((prev) => !prev)
+		dispatch(todoActions.editTask(id))
+	}
+	console.log(props.todos , 'todos');
 	return (
 		<div>
 			{props.todos.map((el) => {
 				return (
 					<TodoItemSubItem key={el.id}>
-						{show && (
+						{show && el.id === id &&  (
 							<Modal
 								todosId={props.todosId}
 								id={el.id}
@@ -44,7 +53,7 @@ const TodoItemList = (props) => {
 						)}
 						<h3>{el.todos}</h3>
 						<IconButton
-							onClick={toggleHandler}
+							onClick={()=>toggleHandler(el.id)}
 							color='primary'
 							aria-label='upload picture'
 							component='span'

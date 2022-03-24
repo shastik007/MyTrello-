@@ -5,8 +5,7 @@ import HomePageStyles from '../../styles/HomeStyles/HomePageStyles'
 import TodoList from './TodoList'
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../../../hooks/useAuth'
-import img from '../../../assets/homeback.avif'
-import { useSelector } from 'react-redux'
+
 
 const HomeStyleGlobal = createGlobalStyle`
   body{
