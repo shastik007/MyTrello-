@@ -19,6 +19,8 @@ import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Alert from '@mui/material/Alert'
 import { addUser } from '../../../store/auth'
+import { useCallbackPrompt } from '../../../hooks/useCallBackPrompt'
+import AlertDialog from '../../UI/AlertDialog'
 
 function Copyright(props) {
 	return (
@@ -41,10 +43,17 @@ function Copyright(props) {
 const theme = createTheme()
 
 export default function SignUp() {
+	const [showPormpt, setShowPrompt] = useState(false)
+	const [showDialog, confimNavigation, cancelNavigation] =
+		useCallbackPrompt(showPormpt)
+
 	const dispatch = useDispatch()
 	const [error, setError] = useState(null)
 	const navigate = useNavigate()
-	const onChange = () => setError(null)
+	const onChange = () => {
+		setError(null)
+		setShowPrompt(true)
+	}
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		const data = new FormData(event.currentTarget)
@@ -72,6 +81,12 @@ export default function SignUp() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Container component='main' maxWidth='xs'>
+				{showDialog && (
+					<AlertDialog
+						confirm={confimNavigation}
+						cancel={cancelNavigation}
+					/>
+				)}
 				{error && <Alert severity='warning'>{error.message}</Alert>}
 				<CssBaseline />
 				<Box

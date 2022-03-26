@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import LoginHeader from './LoginHeader'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import Prompt from '../../UI/AlertDialog'
 
 const LoginGlobalStyle = createGlobalStyle`
 body{
@@ -29,6 +30,7 @@ const Login = () => {
 		<>
 			<LoginGlobalStyle />
 			<LoginContainerStyles>
+				{' '}
 				<LoginHeader />
 				<LoginForm />
 			</LoginContainerStyles>

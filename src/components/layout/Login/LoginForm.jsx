@@ -16,21 +16,28 @@ import {
 	useGetAllTodosQuery,
 	useSetTodoMutation,
 } from '../../../store/todosApi'
-
+import AlertDialog from '../../UI/AlertDialog'
+import { useCallbackPrompt } from '../../../hooks/useCallBackPrompt'
 
 const LoginForm = () => {
 	const [setSomething, { isLoading }] = useSetTodoMutation()
-
 	const [errorMessage, setErrorMessage] = useState(null)
 	const [email, setEmail] = useState('')
+	const [showPormpt, setShowPrompt] = useState(false)
+	const [showDialog, confimNavigation, cancelNavigation] =
+		useCallbackPrompt(showPormpt)
+
 	const [password, setPassword] = useState('')
 	const onChangeEmail = (e) => {
 		setEmail(e.target.value)
 		setErrorMessage(null)
+		setShowPrompt(true)
 	}
+
 	const onChangePassword = (e) => {
 		setPassword(e.target.value)
 		setErrorMessage(null)
+		setShowPrompt(true)
 	}
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -57,17 +64,14 @@ const LoginForm = () => {
 			})
 	}
 
-	// const loginSubmitHandler = async (e) => {
-	// 	e.preventDefault()
-	// 	let response = await setSomething({
-	// 		email,
-	// 		password,
-	// 	}).unwrap()
-	// 	console.log(response);
-	// }
-
 	return (
 		<LoginFormStyles>
+			{showDialog && (
+				<AlertDialog
+					confirm={confimNavigation}
+					cancel={cancelNavigation}
+				/>
+			)}
 			{errorMessage && <LoginWarning message={errorMessage} />}
 			<h5>Log in to Trello</h5>
 			<Input
