@@ -10,3 +10,15 @@ export const getLocalStorage = (key) => {
 export const removeLocalStorage = (key) => {
 	return localStorage.removeItem(key)
 }
+
+export const convertFireBaseData = (data) => {
+	const transformedData = []
+	for (const key in data) {
+		transformedData.push({
+			id: key,
+			...data[key],
+		})
+	}
+
+	return transformedData
+}

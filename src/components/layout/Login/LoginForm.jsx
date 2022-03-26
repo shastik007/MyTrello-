@@ -12,8 +12,15 @@ import { AiFillApple } from 'react-icons/ai'
 import { BsSlack } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../../store/auth'
+import {
+	useGetAllTodosQuery,
+	useSetTodoMutation,
+} from '../../../store/todosApi'
+
 
 const LoginForm = () => {
+	const [setSomething, { isLoading }] = useSetTodoMutation()
+
 	const [errorMessage, setErrorMessage] = useState(null)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -37,7 +44,7 @@ const LoginForm = () => {
 						token: user.accessToken,
 						email: user.email,
 						id: user.uid,
-					}, ),
+					}),
 				)
 			})
 			.then(() => {
@@ -49,6 +56,15 @@ const LoginForm = () => {
 				})
 			})
 	}
+
+	// const loginSubmitHandler = async (e) => {
+	// 	e.preventDefault()
+	// 	let response = await setSomething({
+	// 		email,
+	// 		password,
+	// 	}).unwrap()
+	// 	console.log(response);
+	// }
 
 	return (
 		<LoginFormStyles>

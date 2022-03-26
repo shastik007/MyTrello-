@@ -8,7 +8,9 @@ const IntroductionSection = () => {
 	return (
 		<IntroductionSectionStyles>
 			<div className='first_'>
-				<h1><strong>Trello</strong> helps teams solve work challenges.</h1>
+				<h1>
+					<strong>Trello</strong> helps teams solve work challenges.
+				</h1>
 				<p>
 					Team up, manage projects, and take productivity to the next
 					level in your own unique way with Trello.
@@ -19,7 +21,9 @@ const IntroductionSection = () => {
 						label='EMAIL'
 						variant='outlined'
 					/>
-					<Button className='button' variant='contained'>register - it's free</Button>
+					<Button className='button' variant='contained'>
+						register - it's free
+					</Button>
 				</form>
 			</div>
 			<img src={hero} alt='HEROf' />

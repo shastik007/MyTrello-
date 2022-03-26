@@ -4,15 +4,23 @@ import { todoActions } from '../../../store/todo'
 import AddTodoFormStyles from '../../styles/HomeStyles/AddTodoFormStyles'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { useSetTodoMutation } from '../../../store/todosApi'
+import { nanoid } from '@reduxjs/toolkit'
 const AddTodoForm = (props) => {
+	const [setTodoItem, { isLoading, error }] = useSetTodoMutation()
 	const [value, setValue] = useState('')
 	const dispatch = useDispatch()
 
-	const submitHandler = (e) => {
+	// const submitHandler = (e) => {
+	// 	e.preventDefault()
+	// 	dispatch(todoActions.add({ value:value.toUpperCase() }))
+	// 	setValue('')
+	// }
+
+	const submitHandler = async (e) => {
 		e.preventDefault()
-		dispatch(todoActions.add({ value:value.toUpperCase() }))
+		await setTodoItem({ value: value.toUpperCase()})
 		setValue('')
 	}
 
