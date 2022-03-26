@@ -7,22 +7,24 @@ import IconButton from '@mui/material/IconButton'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { useSetTodoMutation } from '../../../store/todosApi'
 import { nanoid } from '@reduxjs/toolkit'
+import { useCallbackPrompt } from '../../../hooks/useCallBackPrompt'
 const AddTodoForm = (props) => {
-	const [setTodoItem, { isLoading, error }] = useSetTodoMutation()
+	// const [setTodoItem, { isLoading, error }] = useSetTodoMutation()
 	const [value, setValue] = useState('')
 	const dispatch = useDispatch()
+	
 
-	// const submitHandler = (e) => {
-	// 	e.preventDefault()
-	// 	dispatch(todoActions.add({ value:value.toUpperCase() }))
-	// 	setValue('')
-	// }
-
-	const submitHandler = async (e) => {
+	const submitHandler = (e) => {
 		e.preventDefault()
-		await setTodoItem({ value: value.toUpperCase()})
+		dispatch(todoActions.add({ value:value.toUpperCase() }))
 		setValue('')
 	}
+
+	// const submitHandler = async (e) => {
+	// 	e.preventDefault()
+	// 	await setTodoItem({ value: value.toUpperCase()})
+	// 	setValue('')
+	// }
 
 	return (
 		<AddTodoFormStyles>

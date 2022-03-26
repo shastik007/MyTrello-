@@ -6,13 +6,8 @@ import TodoList from './TodoList'
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../../../hooks/useAuth'
 
-
 const HomeStyleGlobal = createGlobalStyle`
-  body{
-	  background:var(--background-home);
-	  background-size: cover;
-	  
-  }
+  
 `
 const HomePage = () => {
 	const auth = useAuth()
@@ -20,7 +15,7 @@ const HomePage = () => {
 	const changeHandler = (e) => {
 		setValue(e.target.value)
 	}
-	console.log(auth,'auth home')
+	console.log(auth, 'auth home')
 	return (
 		<>
 			{auth.isAuth ? (

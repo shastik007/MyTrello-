@@ -7,10 +7,7 @@ import { useGetAllTodosQuery } from '../../../store/todosApi'
 import { convertFireBaseData } from '../../../utils/helpers'
 
 const TodoList = ({ searchValue }) => {
-	const array = useGetAllTodosQuery()
-	console.log(array.data)
-	const data = convertFireBaseData(array.data === null ? {} : array.data)
-	// let state = useSelector((state) => state.todo.todoData)
+   	let data = useSelector((state) => state.todo.todoData)
 	if (searchValue.length > 0) {
 		data = data.filter((el) => {
 			return el.todoName.toUpperCase().match(searchValue.toUpperCase())
@@ -22,7 +19,7 @@ const TodoList = ({ searchValue }) => {
 	return (
 		<TodoListStyles>
 			{data.map((todos) => {
-				return <TodoItem key={todos.id} id={todos.id} />
+				return <TodoItem key={todos.id} id={todos.id} todos={todos} />
 			})}
 			<AddItem />
 		</TodoListStyles>

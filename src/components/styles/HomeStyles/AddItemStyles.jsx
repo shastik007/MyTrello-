@@ -5,7 +5,7 @@ const AddItemStyles = styled.div`
 		width: 200px;
 		height: 50px;
 		font-weight: bold;
-		background-color: white;
+		background-color: orange;
 		color: black;
 		border-radius: 4px;
 		display: flex;
@@ -13,8 +13,8 @@ const AddItemStyles = styled.div`
 		justify-content: center;
 		transition: 0.3s;
 	}
-	.button:hover{
-		background-color: gray;
+	.button:hover {
+		background-color: #1976d2;
 		color: white;
 	}
 `
